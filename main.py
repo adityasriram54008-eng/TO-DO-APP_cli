@@ -1,6 +1,4 @@
 import time
-import functools
-
 import functions
 
 t = time.strftime("%d-%Y-%m- %H:%M:%S")
