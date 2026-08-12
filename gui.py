@@ -36,28 +36,31 @@ while True:
             #that new_todo is appeneded to the existing todos list with \n, and is written into todos.txt
 
             window['todos'].update(values=todos)
+            #this does real time addition of to_do in the list box
 
         case "Edit":
             todo_to_edit = values['todos'][0]
-            #todos gets the value associated with the todos key from the listbox, i.e by clicking on a particular todos
+            #todo_to_edit gets the value associated with the todos key from the listbox, i.e by clicking on a particular to_do
             #you get the event as todos with values, but by clicking on the edit button this case matches and the following operations are done
 
             new_todo = values['TO-DO'] +'\n'
-
+            # new_todo stores the value associated with the key TO-DO entered in the input box after selection of the to-do to be edited
 
             todos = functions.get_todos()
             index = todos.index(todo_to_edit)
+            #gets the index of to_do clicked on
             todos[index] = new_todo
+            #using the index the old to_do is replaced with the new_todo
             functions.write_todos(todos)
             window['todos'].update(values=todos)
-
+            #this does real time changing in the todos listbox
 
         case 'todos':
             window['TO-DO'].update(value=values['todos'][0])
+            #this does real time updation when a to_do is clicked it gets pasted in the input box
 
         case sg.WIN_CLOSED:
         #case when close clicked, loop breaks out and the window is closed
-
             break
 
 window.close()
