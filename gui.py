@@ -14,8 +14,10 @@ list_box = sg.Listbox(values=functions.get_todos(), key = 'todos', enable_events
 #a list box to be displayed in gui and has values from get_todos
 
 edit_button = sg.Button('Edit')
+complete_button = sg.Button('Complete')
+exit_button = sg.Button('Exit')
 
-window = sg.Window('My TO-DO App',layout= [[label] , [input_box,add_button], [list_box,edit_button]], font = ('Helvetica', 12))
+window = sg.Window('My TO-DO App',layout= [[label] , [input_box,add_button], [list_box,edit_button,complete_button],[exit_button]], font = ('Helvetica', 12))
 #the window of the gui i mean in the interface, with '..' as the title
 #in layout[] there's a nested list indicating the contents will be in one row
 
@@ -58,6 +60,17 @@ while True:
         case 'todos':
             window['TO-DO'].update(value=values['todos'][0])
             #this does real time updation when a to_do is clicked it gets pasted in the input box
+
+        case "Complete":
+            todo_to_complete = values['todos'][0]
+            todos = functions.get_todos()
+            todos.remove(todo_to_complete)
+            functions.write_todos(todos)
+            window['todos'].update(values=todos)
+            window['TO-DO'].update(value = '')
+
+        case 'Exit':
+            break
 
         case sg.WIN_CLOSED:
         #case when close clicked, loop breaks out and the window is closed
