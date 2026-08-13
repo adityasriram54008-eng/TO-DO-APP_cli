@@ -24,7 +24,7 @@ while True:
     # for eg window.read() for adding hi using the 'Add' button does == event = 'Add'  and values = {TO-DO:'hi'})
 
     match event:
-    #checks for feature to be done similar to main.py
+    #checks for feature to be done similar to todo_cli.py
 
         case "Add":
             todos = functions.get_todos()
